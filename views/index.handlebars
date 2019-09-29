@@ -1,0 +1,40 @@
+<div class="container">
+
+  <div class="row">
+
+    <h1 class="col s12 center">Burgers!</h1>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col s12 m6 available">
+      <h2>Available Burgers</h2>
+
+      <p>
+        {{#each burgers}}
+          {{#unless devoured}}
+            <p>{{burger_name}}</p>
+          {{/unless}}
+        {{/each}}
+      </p>
+
+    </div>
+
+    <div class="col s12 m6 devoured">
+      <h2>Eaten Burgers</h2>
+        {{#each burgers}}
+          {{#if devoured}}
+            <p>{{burger_name}}</p>
+          {{/if}}
+        {{/each}}
+    </div>
+
+  </div>
+
+  <div class="row">
+
+
+  </div>
+
+</div>
