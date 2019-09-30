@@ -22,6 +22,7 @@ const objString = (ob) => {
       }
 
       arr.push(`${key} = ${value}`);
+      console.log(arr);
     }
   }
 
@@ -31,25 +32,25 @@ const objString = (ob) => {
 
 const orm = {
 
-  selectAll: function(tableName, cb) {
+  selectAll: function(tableName, callback) {
     connection.query(`SELECT * FROM ${tableName}`, function(err, result) {
       if (err) throw err; 
 
-      cb(result);
+      callback(result);
     });
   }, 
-  insertOne: function(tableName, cols, vals, cb) {
+  insertOne: function(tableName, cols, vals, callback) {
     connection.query(`INSERT INTO ${tableName} (${cols}) VALUES (${printQuestionMarks(vals.length)})`, vals, function(err, result) {
       if (err) throw err; 
 
-      cb(result);
+      callback(result);
     });
   }, 
-  updateOne: function(tableName, objColVals, condition, cb) {
+  updateOne: function(tableName, objColVals, condition, callback) {
     connection.query(`UPDATE ${tableName} SET ${objString(objColVals)} WHERE ${condition}`, function(err, result) {
       if (err) throw err; 
 
-      cb(result);
+      callback(result);
     });
   }
 };
