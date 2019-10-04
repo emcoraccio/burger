@@ -3,15 +3,16 @@
   <div class="row">
 
     <h1 class="col s12 center">Burgers!</h1>
+    <img class="col s2 offset-s5 burger-img" src="/assets/img/sk-uVPV_nV17Tw-unsplash.jpg" alt="">
 
   </div>
 
   <div class="row">
 
-    <div class="col s12 m6 available">
-      <h3>Available Burgers</h3>
+    <div class="col s12 m6 available center">
+      <h3 class="header">Available Burgers</h3>
 
-      <ul>
+      <ul class="available-list">
         {{#each burgers}}
           {{#unless devoured}}
             {{> burgers/burger-block devoured=false}}
@@ -21,9 +22,9 @@
 
     </div>
 
-    <div class="col s12 m6 devoured">
-      <h3>Eaten Burgers</h3>
-      <ul>
+    <div class="col s12 m6 devoured center">
+      <h3 class="header">Eaten Burgers</h3>
+      <ul class="eaten-list">
         {{#each burgers}}
           {{#if devoured}}
             {{> burgers/burger-block devoured=true}}
