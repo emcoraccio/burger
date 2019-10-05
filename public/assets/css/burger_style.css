@@ -57,7 +57,7 @@ h3.header {
 
 
 
-/* label underline focus color */
+/* label underline/text focus color */
 div.input-field input#burger:focus{
 
   border-bottom: 1px solid #3a443a;
