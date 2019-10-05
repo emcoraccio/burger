@@ -55,10 +55,13 @@ h3.header {
   background-color: #3a443a;
 }
 
+
+
 /* label underline focus color */
 div.input-field input#burger:focus{
 
   border-bottom: 1px solid #3a443a;
   box-shadow: 0 1px 0 0 #2b3a2b;
+  color: #ffffff;
 
 }

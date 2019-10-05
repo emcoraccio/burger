@@ -32,25 +32,48 @@ const objString = (ob) => {
 
 const orm = {
 
-  selectAll: function(tableName, callback) {
-    connection.query(`SELECT * FROM ${tableName}`, function(err, result) {
-      if (err) throw err; 
+  selectAll: function(tableName) {
+    
+    return new Promise((resolve, reject) => {
+      
+      connection.query(`SELECT * FROM ${tableName}`, function(err, result) {
+        if (err) {
+          reject(err);
+          return;
+        } 
+  
+        resolve(result);
+      });
 
-      callback(result);
-    });
+    })
   }, 
-  insertOne: function(tableName, cols, vals, callback) {
-    connection.query(`INSERT INTO ${tableName} (${cols}) VALUES (${printQuestionMarks(vals.length)})`, vals, function(err, result) {
-      if (err) throw err; 
+  insertOne: function(tableName, cols, vals) {
 
-      callback(result);
-    });
+    return new Promise((resolve, reject) => {
+
+      connection.query(`INSERT INTO ${tableName} (${cols}) VALUES (${printQuestionMarks(vals.length)})`, vals, function(err, result) {
+        if (err) {
+          reject(err);
+          return;
+        } 
+  
+        resolve(result);
+      });
+
+    })
   }, 
-  updateOne: function(tableName, objColVals, condition, callback) {
-    connection.query(`UPDATE ${tableName} SET ${objString(objColVals)} WHERE ${condition}`, function(err, result) {
-      if (err) throw err; 
+  updateOne: function(tableName, objColVals, condition) {
 
-      callback(result);
+    return new Promise((resolve, reject) => {
+      
+      connection.query(`UPDATE ${tableName} SET ${objString(objColVals)} WHERE ${condition}`, function(err, result) {
+        if (err){
+          reject(err);
+          return; 
+        }
+        resolve(result);
+      });
+
     });
   }
 };
