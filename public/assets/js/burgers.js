@@ -5,7 +5,6 @@ $(document).ready(function () {
     let id = $(this).data("id");
     let newDevoured = $(this).data("new-devoured");
 
-    console.log(id, newDevoured);
     let newState = {};
 
     if (newDevoured) {
@@ -14,7 +13,6 @@ $(document).ready(function () {
     else {
       newState.devoured = true;
     }
-    console.log(newState);
 
     $.ajax(`api/burgers/${id}`, 
     {
@@ -22,7 +20,6 @@ $(document).ready(function () {
       data: newState
     }).then( 
       function() {
-        console.log(`changed devoured to ${newState}`);
 
         location.reload();
       });

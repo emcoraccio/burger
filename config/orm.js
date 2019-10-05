@@ -22,7 +22,6 @@ const objString = (ob) => {
       }
 
       arr.push(`${key} = ${value}`);
-      console.log(arr);
     }
   }
 
@@ -35,7 +34,7 @@ const orm = {
   selectAll: function(tableName) {
     
     return new Promise((resolve, reject) => {
-      
+
       connection.query(`SELECT * FROM ${tableName}`, function(err, result) {
         if (err) {
           reject(err);

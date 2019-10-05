@@ -6,7 +6,6 @@ const burger = require("../models/burger");
 router.get("/", function(req, res){
   burger.selectAll(function(data) {
     let dataObj = {burgers: data};
-    console.log(dataObj);
     res.render("index", dataObj);
   });
 });
@@ -19,9 +18,7 @@ router.post("/api/burgers", function(req, res) {
 
 router.put("/api/burgers/:id", function(req, res) {
   let condition = `id = ${req.params.id}`;
-
-  console.log("condition", condition);
-
+  
   burger.updateOne({
     devoured: req.body.devoured
   }, condition, function(result) {
